@@ -1,9 +1,20 @@
-html,
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: #ffffff;
+  font-family: 'Roboto', sans-serif !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.king {
+  min-height: 100vh;
 }
 
 a {
@@ -11,6 +22,169 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
+/* Nav bar  */
+
+nav {
+  background-color: whitesmoke;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  overflow: hidden;
+}
+
+.navavatar:hover {
+  cursor: pointer;
+}
+
+.navavatar img {
+  border-radius: 60px;
+}
+
+.navsearchbar {
+  border-radius: 10px;
+  height: 50px;
+  width: 400px;
+  padding: 20px;
+  transition-duration: .3s;
+}
+
+.navsearchbar:focus {
+  width: 700px;
+}
+
+.navcover {
+  height: 100%;
+  background-color: thistle;
+}
+
+.navdropdown {
+  border-radius: 10px;
+  margin-top: 10px;
+  background-color: white;
+  position: absolute;
+  color: black;
+}
+
+/* N progress bar */
+
+#nprogress .bar {
+  background: #B026FF !important;
+  height: 4px !important;
+}
+
+#nprogress .spinner-icon {
+  border-top-color: #B026FF !important;
+  border-left-color: #B026FF !important;
+}
+
+/* login page */
+
+.loginpage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 100px;
+}
+
+.loginform {
+  width: 500px;
+  background-color: whitesmoke;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #F5F5F5;
+  /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cpolygon fill='%23bbbbbb' points='957 450 539 900 1396 900'/%3E%3Cpolygon fill='%23555555' points='957 450 872.9 900 1396 900'/%3E%3Cpolygon fill='%23bba0b8' points='-60 900 398 662 816 900'/%3E%3Cpolygon fill='%23614d5f' points='337 900 398 662 816 900'/%3E%3Cpolygon fill='%23b983b5' points='1203 546 1552 900 876 900'/%3E%3Cpolygon fill='%236c436a' points='1203 546 1552 900 1162 900'/%3E%3Cpolygon fill='%23b665b2' points='641 695 886 900 367 900'/%3E%3Cpolygon fill='%23763774' points='587 900 641 695 886 900'/%3E%3Cpolygon fill='%23b143ae' points='1710 900 1401 632 1096 900'/%3E%3Cpolygon fill='%237f267e' points='1710 900 1401 632 1365 900'/%3E%3Cpolygon fill='%23aa00aa' points='1210 900 971 687 725 900'/%3E%3Cpolygon fill='%23880088' points='943 900 1210 900 971 687'/%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-size: cover; */
+  box-shadow: 20px 20px 40px 2px #A689E1;
+  
+}
+
+.logininput {
+  border-radius: 5px;
+  height: 50px;
+  width: 400px;
+  padding: 20px;
+  font-size: 1em;
+}
+
+.loginheader {
+  margin: 20px;
+}
+
+.loginheader h3 {
+  font-weight: bold;
+  font-size: 2.1em;
+}
+
+.loginpage label {
+  font-size: 1.5em;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+
+.loginsubmit {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.loginsubmit input {
+  font-size: 1.5em;
+  background-color: #7434C3;
+  border: none !important;
+  padding: 5px;
+  border-radius: 10px;
+  color: whitesmoke;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+
+.loginsubmitempty {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.loginsubmitempty p{
+  font-size: 1.5em;
+  background-color: grey;
+  border: none !important;
+  padding: 5px;
+  border-radius: 10px;
+  color: whitesmoke;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  cursor: pointer;
+}
+
+.switchlog {
+  color: #0645AD;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+
+/* footer */
+
+footer {
+  height: 75px;
+  background-color: #4D2EBC;
+  width: 100%;
+  position: sticky;
+  top: 100%;
+}
+
+.footercontent {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
 }
