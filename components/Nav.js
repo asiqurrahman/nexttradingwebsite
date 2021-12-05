@@ -23,21 +23,21 @@ const Nav = () => {
     return (
         <div>
             <nav>
-                <div className="navlogo">
+                <div className="navlogo" id="navitem">
                     <div>
                         <Link href="/"><h1>swup</h1></Link>
                     </div>
                 </div>
-                <div className="navsearch">
+                <div className="navsearch" id="navitem">
                     <div>
                         <input className="navsearchbar" type="text" placeholder="Search.." />
                     </div>
                 </div>
-                <div className="navuser">
+                <div className="navuser" id="navitem">
                     {user ? 
                     <div className="navavatar">
                         <div onClick={() => setDropdown(!dropdown)}>
-                            <img src={userimage} width="75" height="75"/>
+                            <img src={userimage} width="70" height="70"/>
                         </div>
                         {dropdown &&
                             <div className="navdropdown">
@@ -50,7 +50,7 @@ const Nav = () => {
                     :
                     <div className="navlogin">
                         <Link href="/login">
-                            <p>Login/Signup</p>
+                            <p className="navlogintext">Login/Signup</p>
                         </Link>
                     </div>
                     }
