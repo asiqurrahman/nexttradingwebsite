@@ -42,7 +42,9 @@ const Nav = () => {
                         {dropdown &&
                             <div className="navdropdown">
                                 <p>{user.username}</p>
-                                <p>settings</p>
+                                <Link href="/createpost">
+                                    <p>Create Post</p>
+                                </Link>
                                 <p onClick={logoutUser}>logout</p>
                             </div>
                         }

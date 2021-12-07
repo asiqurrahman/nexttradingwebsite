@@ -14,6 +14,7 @@ export const AuthProvider = ({children}) => {
     let [loading, setLoading] = useState(false)
     const router = useRouter()
 
+    const token = authTokens?.refresh
 
     useEffect(() => {
             if(localStorage.getItem('authTokens')) {
@@ -61,7 +62,7 @@ export const AuthProvider = ({children}) => {
             headers:{
                 'Content-Type': 'application/json'
             },
-            body:JSON.stringify({'refresh': authTokens?.refresh})
+            body:JSON.stringify({'refresh': refresh})
         })
         let data = await response.json()
 
