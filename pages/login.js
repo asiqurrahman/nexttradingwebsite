@@ -4,7 +4,7 @@ import AuthContext from '../context/AuthContext'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
-const login = () => {
+const Login = () => {
 
     let {loginUser, user} = useContext(AuthContext)
 
@@ -70,7 +70,7 @@ const login = () => {
     )
 }
 
-export default login
+export default Login
 
 
 {/* <form onSubmit={loginUser}>

@@ -4,7 +4,7 @@ import AuthContext from '../context/AuthContext'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
-const createaccount = () => {
+const Createaccount = () => {
 
     const router = useRouter()
 
@@ -99,4 +99,4 @@ const createaccount = () => {
     )
 }
 
-export default createaccount
+export default Createaccount

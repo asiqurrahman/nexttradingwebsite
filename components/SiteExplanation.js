@@ -17,7 +17,7 @@ const Siteexplanation = () => {
                     <img className="rotate" src="neural.png" />
                 </div>
                 <div id="explanationitem">
-                    <p>Sit back and relax, our algoritham will automatically notify you when an item you're looking for is posted.</p>
+                    <p>Sit back and relax, our algoritham will automatically notify you when an item you&apos;re looking for is posted.</p>
                 </div>
             </div>
             <div className="explanation">

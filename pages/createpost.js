@@ -1,6 +1,6 @@
 import Postform from "../components/Postform"
 
-const createpost = () => {
+const Createpost = () => {
     return (
         <div>
             <div className="creatposttitle">
@@ -11,5 +11,5 @@ const createpost = () => {
     )
 }
 
-export default createpost
+export default Createpost
 

@@ -15,7 +15,7 @@ const Allpost = ({data}) => {
     return (
         <div className="allpost">
              {data?.map((data) => (
-                <div className="allpostsingle">
+                <div className="allpostsingle" key={data.id}>
                     <div className="allpostheader">
                         <img src="https://asiqstestbucket.s3.amazonaws.com/default.jpg" />
                         <p>Asiqur</p>
