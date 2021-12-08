@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Navcover from '../components/Navcover'
-import Siteexplanation from '../components/Siteexplanation'
+import Siteexplanation from '../components/SiteExplanation'
 import Allpost from '../components/Allpost'
 
 export default function Home({data}) {
