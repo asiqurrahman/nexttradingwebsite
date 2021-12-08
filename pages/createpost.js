@@ -4,7 +4,7 @@ const createpost = () => {
     return (
         <div>
             <div className="creatposttitle">
-                <h1>Create Post</h1>
+                <h1 className="creatposttitleheader">Create Post</h1>
                 <Postform />
             </div>
         </div>
@@ -12,3 +12,4 @@ const createpost = () => {
 }
 
 export default createpost
+
