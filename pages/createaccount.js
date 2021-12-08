@@ -47,7 +47,9 @@ const Createaccount = () => {
         formData.append("email", e.target.email.value)
         formData.append("username", e.target.username.value)
         formData.append("password", e.target.password.value)
-        const response = await fetch('https://asiqursswap.herokuapp.com/api/register/', {
+        // const response = await fetch('https://asiqursswap.herokuapp.com/api/register/', {
+        const response = await fetch('http://127.0.0.1:8000/api/register/', {
+
             method: "POST",
             body: formData
          })

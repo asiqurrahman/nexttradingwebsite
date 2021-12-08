@@ -1,6 +1,9 @@
 import React, {useContext, useState, useEffect} from 'react'
+import { useRouter } from 'next/router'
 
 const Allpost = ({data}) => { 
+
+    const router = useRouter()
 
 //     const [something, setsomething] = useState()
 
@@ -11,24 +14,28 @@ const Allpost = ({data}) => {
 //        const returnedurl = data.avatar
 //        return returnedurl
 //    }
+    
+    function sendTo(id){
+        router.push('/post/' + id)
+    }
 
     return (
         <div className="allpost">
              {data?.map((data) => (
-                <div className="allpostsingle" key={data.id}>
+                <div className="allpostsingle" key={data.id} onClick={() => sendTo(data.id)}>
                     <div className="allpostheader">
                         <img src="https://asiqstestbucket.s3.amazonaws.com/default.jpg" />
                         <p>Asiqur</p>
                     </div>
                     <div className="allpostimages">
-                        <div>
+                        <div className="allpostdiv">
                             <p>{data.trade}</p>
                             <img src={data.trade_image} />
                         </div>
                         <div>
                             <img src="swap.png" className="swapimage"/>
                         </div>
-                        <div>
+                        <div className="allpostdiv">
                             <p>{data.wanted}</p>
                             <img src={data.wanted_image} />
                         </div>
