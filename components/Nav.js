@@ -13,7 +13,7 @@ const Nav = () => {
     const userid = user?.user_id
     useEffect(() => {
         const getUserImage =  async () => {
-            const response = await fetch(`http://127.0.0.1:8000/api/user/${userid}/`)
+            const response = await fetch(`https://asiqursswap.herokuapp.com/api/user/${userid}/`)
             const data = await response.json()
             setUserimage(data.avatar)
         }

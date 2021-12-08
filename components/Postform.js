@@ -23,7 +23,7 @@ const Postform = () => {
         formData.append("wanted_image", wanted.files[0])
         formData.append("trade_description", e.target.tradedescription.value)
         formData.append("wanted_description", e.target.wanteddescription.value)
-        const response = await fetch('http://127.0.0.1:8000/api/createpost/', {
+        const response = await fetch('https://asiqursswap.herokuapp.com/api/createpost/', {
             method: "POST",
             body: formData
          })
