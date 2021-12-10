@@ -7,14 +7,14 @@ const Nav = () => {
 
     let {user, logoutUser} = useContext(AuthContext)
 
-    const [ dropdown , setDropdown ] = useState(false)
+    const [dropdown , setDropdown] = useState(false)
     const [userimage, setUserimage] = useState()
 
     const userid = user?.user_id
     useEffect(() => {
         const getUserImage =  async () => {
-            // const response = await fetch(`https://asiqursswap.herokuapp.com/api/user/${userid}/`)
-            const response = await fetch(`http://127.0.0.1:8000/api/user/${userid}/`)
+            const response = await fetch(`https://asiqursswap.herokuapp.com/api/user/${userid}/`)
+            // const response = await fetch(`http://127.0.0.1:8000/api/user/${userid}/`)
             const data = await response.json()
             setUserimage(data.avatar)
         }
@@ -45,6 +45,9 @@ const Nav = () => {
                                 <p>{user.username}</p>
                                 <Link href="/createpost">
                                     <p>Create Post</p>
+                                </Link>
+                                <Link href="/settings">
+                                    <p>Settings</p>
                                 </Link>
                                 <p onClick={logoutUser}>logout</p>
                             </div>

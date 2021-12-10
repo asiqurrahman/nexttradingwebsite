@@ -4,7 +4,7 @@ const Postdescription = () => {
             <div>
                 <label>Description</label>
                 <p>Descripe what you have...</p>
-                <textarea id="tradedescription" name="tradedescription" rows="4" cols="50" />
+                <textarea id="tradedescription" name="traddescription" rows="4" cols="50"/>
             </div>
             <div>
                 <label>Description</label>

@@ -60,7 +60,6 @@ const Postimage = () => {
                     <div className="previewProfilePic">
                         <img className="playerProfilePic_home_tile" src={tradedimage} />
                     </div>
-                    
                 </div>
                 <div className="wantedimage">
                   <label>Add an image of what you want</label>
