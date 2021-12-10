@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 const Login = () => {
 
-    let {loginUser, user} = useContext(AuthContext)
+    let {loginUser, user, failedlogin} = useContext(AuthContext)
 
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
@@ -49,6 +49,7 @@ const Login = () => {
                 </div>
                 <div>
                     <form onSubmit={loginUser}>
+                        {failedlogin && <p>Email or Password is incorrect</p>}
                         <label>Email</label>
                         <br />
                         <input className="logininput" type="text" name="email" placeholder="Enter Email" onChange={ e => setEmail(e.target.value)}/>

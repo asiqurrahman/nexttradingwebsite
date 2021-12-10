@@ -47,28 +47,36 @@ const Settings = () => {
     const getLocation = async (e,) => {
         e.preventDefault()
         const address = e.target.locationval.value
-        const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyAsJLWRgoDZj4pMuIej-7y_AMiGbr3LlDI&result_type=locality`, {
+        const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyAsJLWRgoDZj4pMuIej-7y_AMiGbr3LlDI`, {
             method:'POST'
         })
         const data = await response.json()
+        console.log(JSON.stringify(data))
         updateLocation(e, data)
     }
 
     const updateLocation = async (e , data) => {
         e.preventDefault();
-        const city = data.results[0].address_components[3].long_name
-        const state = data.results[0].address_components[5].long_name
-        const zipcode = data.results[0].address_components[7].long_name
+        let maincity;
+        try {
+            const city = data.results[0].address_components.filter(ac=>~ac.types.indexOf('locality'))[0].long_name
+            maincity = city
+        } catch(err) {
+            const city = data.results[0].address_components.filter(ac=>~ac.types.indexOf('sublocality'))[0].long_name
+            maincity = city
+        }
+        const state = data.results[0].address_components.filter(ac=>~ac.types.indexOf('administrative_area_level_1'))[0].long_name
+        const zipcode = data.results[0].address_components.filter(ac=>~ac.types.indexOf('postal_code'))[0].long_name
         console.log(JSON.stringify(data))
         const lat = data.results[0].geometry.location.lat
         const long = data.results[0].geometry.location.lng
-        const citystate = city + ", " + state
+        const citystate = maincity + ", " + state
         let formData = new FormData()
         formData.append("lat", lat)
         formData.append("lng", long)
         formData.append("city", citystate)
         formData.append("zipcode", zipcode)
-        const response = await fetch(`https://asiqursswap.herokuapp.com/user/update/${userid}/`, {
+        const response = await fetch(`https://asiqursswap.herokuapp.com/api/user/update/${userid}/`, {
             method: 'PATCH',
             body: formData
         })
@@ -78,18 +86,13 @@ const Settings = () => {
     }
 
     const allFunc = (e) => {
-        const changepic = document.getElementById('changepic');
-        if(changepic) {
-          changeProfile(e)
-          updateLocation(e)
-        } else {
-            updateLocation(e)
-        }
+        changeProfile(e)
+        updateLocation(e)
     }
 
     return (
         <div className="usersettings">
-            <form className="settingscontainer2" onSubmit={allFunc}>
+            <form className="settingscontainer2" onSubmit={getLocation}>
                 <div className="settingscontainer">
                     <div className="settingsimg">
                         <img src={tradedimage ? tradedimage : userdata?.avatar} />
@@ -122,7 +125,7 @@ const Settings = () => {
                 </div>
                 {edit ? 
                 <div className="postsubmit">
-                <input type="submit" value="Save" />
+                    <input type="submit" value="Save" />
                 </div>
                 :
                 <div className="editbutton">

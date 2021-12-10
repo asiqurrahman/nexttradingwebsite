@@ -23,7 +23,7 @@ const Navcover = () => {
                 <img src="trade.png" />
             </div>
             <div>
-                <img id="wave" src="wave.png" />
+                <img id="wave" src="wave4.png" />
             </div>
         </div>
     )

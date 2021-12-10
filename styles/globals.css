@@ -200,11 +200,13 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  margin-top: 125px;
 }
 
 .loginform {
   width: 500px;
-  margin: 125px;
+  margin: 0px 125px 125px 125px;
   background-color: whitesmoke;
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
@@ -423,7 +425,13 @@ nav {
 }
 
 .postsubmit input:hover {
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.postsubmit input:active {
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+  background-color: whitesmoke;
+  color: black;
 }
 
 /* All Post */
@@ -461,7 +469,7 @@ nav {
   display: flex;
   align-items: center;
   padding: 10px;
-  background-color: #eeeeee;
+  background-color: #9e9c9c;
 }
 
 .swapimage {

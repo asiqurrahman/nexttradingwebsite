@@ -12,6 +12,7 @@ export const AuthProvider = ({children}) => {
     let [authTokens, setAuthTokens] = useState(null)
     let [user, setUser] = useState(null)
     let [loading, setLoading] = useState(false)
+    const [failedlogin, setFailedlogin] = useState(false)
     const router = useRouter()
 
     const token = authTokens?.refresh
@@ -44,7 +45,7 @@ export const AuthProvider = ({children}) => {
             localStorage.setItem('authTokens', JSON.stringify(data))
             router.push('/')
         } else {
-            alert('something went wrong')
+            setFailedlogin(true)
         }
     }
 
@@ -103,6 +104,7 @@ export const AuthProvider = ({children}) => {
         loginUser:loginUser,
         logoutUser:logoutUser,
         authTokens:authTokens,
+        failedlogin:failedlogin,
     }
 
     return(

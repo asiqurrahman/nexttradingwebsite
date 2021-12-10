@@ -5,15 +5,22 @@ const Allpost = ({data}) => {
 
     const router = useRouter()
 
-//     const [something, setsomething] = useState()
+    const [something, setSomething] = useState()
 
-//    const getUser = async (id) => {
-//        let url = `http://127.0.0.1:8000/api/user/${id}/`
-//        const response = await fetch(url)
-//        const data = await response.json()
-//        const returnedurl = data.avatar
-//        return returnedurl
-//    }
+   const getUser = async (id) => {
+       let url = `http://127.0.0.1:8000/api/user/${id}/`
+       const response = await fetch(url)
+       const data = await response.json()
+       const returnedurl = data.avatar
+       return JSON.parse(returnedurl)
+   }
+
+   const getting = async (url) => {
+       const title = await url
+       return title
+   }
+
+   console.log(getUser(1))
     
     function sendTo(id){
         router.push('/post/' + id)
@@ -24,7 +31,7 @@ const Allpost = ({data}) => {
              {data?.map((data) => (
                 <div className="allpostsingle" key={data.id} onClick={() => sendTo(data.id)}>
                     <div className="allpostheader">
-                        <img src="https://asiqstestbucket.s3.amazonaws.com/default.jpg" />
+                        <img src="https://asiqstestbucket.s3.amazonaws.com/default.jpg"/>
                         <p>Asiqur</p>
                     </div>
                     <div className="allpostimages">
