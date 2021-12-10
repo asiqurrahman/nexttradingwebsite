@@ -8,16 +8,12 @@ const Allpost = ({data}) => {
     const [something, setSomething] = useState()
 
    const getUser = async (id) => {
-       let url = `http://127.0.0.1:8000/api/user/${id}/`
+       let url = `https://asiqursswap.herokuapp.com/api/user/${id}/`
        const response = await fetch(url)
        const data = await response.json()
        const returnedurl = data.avatar
-       return JSON.parse(returnedurl)
-   }
-
-   const getting = async (url) => {
-       const title = await url
-       return title
+       const returnedurl2 = JSON.stringify(returnedurl)
+       return returnedurl2
    }
 
    console.log(getUser(1))

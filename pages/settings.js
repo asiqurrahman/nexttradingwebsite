@@ -92,7 +92,7 @@ const Settings = () => {
 
     return (
         <div className="usersettings">
-            <form className="settingscontainer2" onSubmit={getLocation}>
+            <form className="settingscontainer2" onSubmit={allFunc}>
                 <div className="settingscontainer">
                     <div className="settingsimg">
                         <img src={tradedimage ? tradedimage : userdata?.avatar} />
