@@ -32,7 +32,7 @@ const Googleplaces = () => {
                     {suggestions.map(suggestion => {
                         
                         return (
-                            <div className="droping" {...getSuggestionItemProps(suggestion)}>
+                            <div className="droping" {...getSuggestionItemProps(suggestion)} key={suggestion.id}>
                                 {suggestion.description}
                                 <hr />
                             </div>
