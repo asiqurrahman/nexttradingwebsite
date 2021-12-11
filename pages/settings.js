@@ -1,6 +1,7 @@
 import { route } from 'next/dist/server/router'
 import React, {useContext, useState, useEffect} from 'react'
 import AuthContext from '../context/AuthContext'
+import Googleplaces from '../components/Googleplaces'
 
 const Settings = () => {
     let {user} = useContext(AuthContext)
@@ -92,7 +93,7 @@ const Settings = () => {
 
     return (
         <div className="usersettings">
-            <form className="settingscontainer2" onSubmit={allFunc}>
+            <form className="settingscontainer2" onSubmit={getLocation}>
                 <div className="settingscontainer">
                     <div className="settingsimg">
                         <img src={tradedimage ? tradedimage : userdata?.avatar} />
@@ -116,7 +117,8 @@ const Settings = () => {
                         {edit ? 
                         <div>
                              <p>Enter zipcode or address</p>
-                            <input type="text" className="editinput" id="locationval" required/>
+                            {/* <input type="text" className="editinput" id="locationval" required/> */}
+                            <Googleplaces />
                         </div>
                         :
                         <p className="userp">{usercity ? usercity : "Not Set. Edit profile to set Location" }</p>
