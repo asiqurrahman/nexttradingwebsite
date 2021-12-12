@@ -711,6 +711,7 @@ nav {
   justify-content: center;
   width: 100%;
   background-color: whitesmoke;
+  height: 100vh;
 }
 
 .profileuser {
