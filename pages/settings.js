@@ -2,20 +2,32 @@ import { route } from 'next/dist/server/router'
 import React, {useContext, useState, useEffect} from 'react'
 import AuthContext from '../context/AuthContext'
 import Googleplaces from '../components/Googleplaces'
-
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+import Googlemaps from '../components/Googlemaps'
 const Settings = () => {
     let {user} = useContext(AuthContext)
     const [userdata, setUserdata] = useState()
     const [edit, setEdit] = useState(false)
     const [picture, setPicture] = useState(null);
     const [tradedimage, setTradedimage] = useState(null);
+    const [lat, setLat] = useState()
+    const [lng, setLng] = useState()
 
     const userid = user?.user_id
     const usercity = userdata?.city
+
+    function separator(numb) {
+        var str = numb.toString().split(".");
+        str[0] = str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return str.join(".");
+    }
     useEffect(async() => {
         const response = await fetch(`https://asiqursswap.herokuapp.com/api/user/${userid}/`)
         const data = await response.json()
         setUserdata(data)
+        setLat(separator(data.lat))
+        setLng(separator(data.lng))
     }, [userid])
 
 
@@ -82,23 +94,23 @@ const Settings = () => {
             body: formData
         })
         if(response.ok) {
-            console.log('wow')
+            location.reload();
         }
     }
 
     const allFunc = (e) => {
+        getLocation(e)
         changeProfile(e)
-        updateLocation(e)
     }
 
     return (
         <div className="usersettings">
-            <form className="settingscontainer2" onSubmit={getLocation}>
+            <form className="settingscontainer2" onSubmit={allFunc}>
                 <div className="settingscontainer">
                     <div className="settingsimg">
                         <img src={tradedimage ? tradedimage : userdata?.avatar} />
-                        <p className="settingsusername">{userdata?.username}</p>
-                        <h4>{userdata?.city}</h4>
+                        <p className="settingsusername">{userdata?.username || <Skeleton />}</p>
+                        <h4>{userdata?.city || <Skeleton />}</h4>
                         <div>
                             {edit &&
                             <div> 
@@ -110,9 +122,9 @@ const Settings = () => {
                     </div>
                     <div className="settinsuseinfo">
                         <p>Email:</p>
-                        <p className="userp">{userdata?.email}</p>
+                        <p className="userp">{userdata?.email || <Skeleton count={2}/>}</p>
                         <p>Username:</p>
-                        <p className="userp">{userdata?.username}</p>
+                        <p className="userp">{userdata?.username || <Skeleton count={2}/>}</p>
                         <p>Location:</p>
                         {edit ? 
                         <div>
@@ -124,6 +136,9 @@ const Settings = () => {
                         <p className="userp">{usercity ? usercity : "Not Set. Edit profile to set Location" }</p>
                         }
                     </div>
+                </div>
+                <div className="googlemapscontainer">
+                    <Googlemaps lat={lat} lng={lng}/>
                 </div>
                 {edit ? 
                 <div className="postsubmit">

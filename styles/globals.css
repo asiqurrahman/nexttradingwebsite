@@ -585,7 +585,6 @@ nav {
 
 .settingsimg {
   display: flex;
-  justify-content: center;
   flex-direction: column;
   align-items: center;
   text-align: center;
@@ -647,13 +646,26 @@ nav {
 }
 
 .droping {
- padding: 10px
+ padding: 10px;
+ border-bottom: 1px solid grey;
 }
 
 .droping:hover {
   background-color: #30C5FF;
   cursor: pointer;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.googlemapscontainer {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.googlemaps {
+  position: relative !important;
+  width: 800px !important;
+  height: 300px !important;
 }
 
 

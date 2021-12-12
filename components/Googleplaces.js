@@ -34,7 +34,6 @@ const Googleplaces = () => {
                         return (
                             <div className="droping" {...getSuggestionItemProps(suggestion)} key={suggestion.id}>
                                 {suggestion.description}
-                                <hr />
                             </div>
                         );
                     })}
