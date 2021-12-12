@@ -56,7 +56,7 @@ const Index = ({data}) => {
 export default Index
 
 export const getServerSideProps = async (context) => {
-    const response = await fetch(`http://127.0.0.1:8000/api/post/user/${context.params.id}/`)
+    const response = await fetch(`https://asiqursswap.herokuapp.com/api/post/user/${context.params.id}/`)
     const data = await response.json()
     return {
         props: {
