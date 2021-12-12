@@ -22,6 +22,7 @@ const Settings = () => {
         str[0] = str[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         return str.join(".");
     }
+
     useEffect(async() => {
         const response = await fetch(`https://asiqursswap.herokuapp.com/api/user/${userid}/`)
         const data = await response.json()
@@ -141,8 +142,13 @@ const Settings = () => {
                     <Googlemaps lat={lat} lng={lng}/>
                 </div>
                 {edit ? 
-                <div className="postsubmit">
-                    <input type="submit" value="Save" />
+                <div className="settingcancelsubmit">
+                    <div className="editbutton">
+                        <p onClick={() => setEdit(!edit)}>Cancel</p>
+                    </div>
+                     <div className="postsubmit">
+                        <input type="submit" value="Save" />
+                     </div>
                 </div>
                 :
                 <div className="editbutton">

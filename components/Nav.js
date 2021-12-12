@@ -2,8 +2,13 @@ import Image from 'next/image'
 import React, {useContext, useState, useEffect} from 'react'
 import AuthContext from '../context/AuthContext'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+
 
 const Nav = () => {
+    
+    const router = useRouter()
+
 
     let {user, logoutUser} = useContext(AuthContext)
 
@@ -11,6 +16,7 @@ const Nav = () => {
     const [userimage, setUserimage] = useState()
 
     const userid = user?.user_id
+
     useEffect(() => {
         const getUserImage =  async () => {
             const response = await fetch(`https://asiqursswap.herokuapp.com/api/user/${userid}/`)
@@ -20,6 +26,10 @@ const Nav = () => {
         }
         getUserImage()
     }, [userid])
+
+    function sendTo(id){
+        router.push('/profile/' + id)
+    }
 
     return (
         <div>
@@ -43,6 +53,7 @@ const Nav = () => {
                         {dropdown &&
                             <div className="navdropdown">
                                 <p>{user.username}</p>
+                                <p onClick={() => sendTo(userid)}>Profile</p>
                                 <Link href="/createpost">
                                     <p>Create Post</p>
                                 </Link>
