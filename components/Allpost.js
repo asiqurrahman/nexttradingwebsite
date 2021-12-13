@@ -12,12 +12,20 @@ const Allpost = ({data}) => {
        const response = await fetch(url)
        const data = await response.json()
        const returnedurl = data.avatar
-       const returnedurl2 = JSON.stringify(returnedurl)
-       return returnedurl2
+       const returnedusername = data.username
+       const userurl = returnedurl
+       const username = returnedusername
+       const userdata = [userurl, username]
+       return userdata
    }
 
-   console.log(getUser(1))
-    
+   async function test(id) {
+       const hmm = await getUser(id)
+       return hmm[0]
+   }
+
+   console.log(test(1))
+
     function sendTo(id){
         router.push('/post/' + id)
     }

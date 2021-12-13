@@ -1,6 +1,17 @@
 import Postform from "../components/Postform"
+import AuthContext from "../context/AuthContext"
+import React, {useContext, useEffect} from 'react'
+import { useRouter } from 'next/router'
 
 const Createpost = () => {
+
+    const router = useRouter()
+    let {user} = useContext(AuthContext)
+
+    if(!user) {
+        router.push('/')
+    }
+
     return (
         <div>
             <div className="creatposttitle">

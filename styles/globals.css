@@ -519,10 +519,11 @@ nav {
 }
 
 .postpreviewheader img {
-  height: auto;
+  height: 100px;
   width: 100px;
   border-radius: 80px;
   margin-right: 20px;
+  object-fit: cover;
 }
 
 .singelpostimages {
@@ -710,8 +711,6 @@ nav {
   display: flex;
   justify-content: center;
   width: 100%;
-  background-color: whitesmoke;
-  height: 100vh;
 }
 
 .profileuser {
@@ -735,6 +734,24 @@ nav {
   width: 150px;
   height: 150px;
   border-radius: 85px;
+}
+
+.messageuser {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+.messageuser p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 40px;
+  border-radius: 5px;
+  background-color: #007FFF;
+  color: whitesmoke;
+  font-size: 1.5em;
 }
 
 /* footer */

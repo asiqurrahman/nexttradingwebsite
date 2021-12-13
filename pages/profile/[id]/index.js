@@ -19,12 +19,22 @@ const Index = ({data}) => {
         setUserdata(data)
     }, [data])
 
+    function sendTo(id){
+        router.push('/post/' + id)
+    }
+    
+    function message() {
+        window.alert("This feature is coming. am solo dev :'). features take time. thanks for waiting :)")
+    }
     return (
         <div className="profile">
             <div className="profileusercontainer">
                 <div className="profileuser">
                     <img src={userdata?.avatar} />
                     <h2>{userdata?.username}</h2>
+                    <div className="messageuser">
+                        <p onClick={message}>Send Message</p>
+                    </div>
                 </div>
             </div>
             <div className="profileuserpost">
