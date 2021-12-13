@@ -8,9 +8,11 @@ const Createpost = () => {
     const router = useRouter()
     let {user} = useContext(AuthContext)
 
-    if(!user) {
-        router.push('/')
-    }
+    useEffect(() => {
+        if(!user) {
+            router.push('/')
+        }
+    })
 
     return (
         <div>
