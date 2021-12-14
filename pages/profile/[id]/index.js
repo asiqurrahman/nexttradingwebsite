@@ -3,6 +3,8 @@ import React, {useContext, useState, useEffect} from 'react'
 import Image from 'next/image'
 import AuthContext from '../../../context/AuthContext'
 import Link from 'next/link'
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 const Index = ({data}) => {
     
@@ -37,6 +39,15 @@ const Index = ({data}) => {
     function message() {
         window.alert("This feature is coming. am solo dev :'). features take time. thanks for waiting :)")
     }
+
+    const deletePost = async (id) => {
+        const response = await fetch(`https://asiqursswap.herokuapp.com/api/post/delete/${id}/`, {
+            method: 'DELETE'
+        })
+        if(response.ok) {
+            console.log('wow')
+        }
+    }
     return (
         <div className="profile">
             <div className="profileusercontainer">
@@ -52,12 +63,22 @@ const Index = ({data}) => {
                 {data[0] ? 
                     <div>
                         {data?.map((data) => (
-                            <div className="allpostsingle" key={data.id} onClick={() => sendTo(data.id)}>
-                                <div className="allpostheader">
-                                    <img src="https://asiqstestbucket.s3.amazonaws.com/default.jpg"/>
-                                    <p>{data?.author_username}</p>
+                            <div className="allpostsingle" key={data.id} >
+                                <div className="allpostheader" id="profileallpostheader">
+                                    <div className="profilepostheader">
+                                        <img src="https://asiqstestbucket.s3.amazonaws.com/default.jpg"/>
+                                        <p>{data?.author_username}</p>
+                                    </div>
+                                    <div className="deletepost">
+                                        <Popup trigger={<p>Delete Post</p>} position="bottom center">
+                                            <div className="confirmdelete">
+                                                <h4>are you sure?</h4>
+                                                <p className="deletepost" onClick={() => deletePost(data.id)}>Delete</p>
+                                            </div>
+                                        </Popup>
+                                    </div>
                                 </div>
-                                <div className="allpostimages">
+                                <div className="allpostimages" onClick={() => sendTo(data.id)}>
                                     <div className="allpostdiv">
                                         <p>{data.trade}</p>
                                         <img src={data.trade_image} />

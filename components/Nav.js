@@ -3,7 +3,8 @@ import React, {useContext, useState, useEffect} from 'react'
 import AuthContext from '../context/AuthContext'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 const Nav = () => {
     
