@@ -73,7 +73,7 @@ const Createaccount = () => {
                         {uniqueissue && <p>This email is already associated with an account. <Link href="/login">Log in</Link></p>}
                         <label>Email</label>
                         <br />
-                        <input className="logininput" type="text" name="email" placeholder="Enter Email" autoComplete="off" onChange={ e => setEmail(e.target.value)}/>
+                        <input className="logininput" type="email" name="email" placeholder="Enter Email" autoComplete="off" onChange={ e => setEmail(e.target.value)}/>
                         <br />
                         <label>Username</label>
                         <br />

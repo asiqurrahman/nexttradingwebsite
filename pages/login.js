@@ -52,7 +52,7 @@ const Login = () => {
                         {failedlogin && <p>Email or Password is incorrect</p>}
                         <label>Email</label>
                         <br />
-                        <input className="logininput" type="text" name="email" placeholder="Enter Email" onChange={ e => setEmail(e.target.value)}/>
+                        <input className="logininput" type="email" name="email" placeholder="Enter Email" onChange={ e => setEmail(e.target.value)}/>
                         <br />
                         <label>Password</label>
                         <br />
