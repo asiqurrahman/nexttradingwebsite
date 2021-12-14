@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import React, {useContext, useState, useEffect} from 'react'
 import Image from 'next/image'
 import AuthContext from '../../../context/AuthContext'
-
+import Link from 'next/link'
 
 const Index = ({data}) => {
     
@@ -77,8 +77,10 @@ const Index = ({data}) => {
                 <div className="allpostsingle" id="allpostsinglenodata">
                     <p>User Has No Post</p>
                     {sameuser && 
-                        <div className="allpostheader">
-                            <p>Create Post</p>
+                        <div className="nopostprofile">
+                            <Link href="/createpost">
+                                <p>Create Post</p>
+                            </Link>
                         </div>
                     }
                 </div>
