@@ -24,7 +24,7 @@ const Index = ({data}) => {
         } else {
             setSameuser(false)
         }
-    }, [userid])
+    })
 
     useEffect( async () => {
         const response = await fetch(`https://asiqursswap.herokuapp.com/api/user/${userid}/`)
