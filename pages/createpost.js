@@ -27,7 +27,7 @@ const Createpost = () => {
                 :
                 <div className="setlocation">
                     <div className="setlocationinner">
-                        <p>Please set you location in settings in order to make a post. We never reveal your exact location and only use it to recommand your post to nearby users.</p>
+                        <p>Please set you location in settings in order to make a post. We never reveal you're exact location and only use it to recommand you're post to nearby users.</p>
                         <Link href="/settings">
                             <p className="createpostsettings">Settings</p>
                         </Link>
