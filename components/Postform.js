@@ -3,15 +3,19 @@ import { useRouter } from 'next/router'
 import AuthContext from "../context/AuthContext";
 import Postimage from "./Postcomponents/Postimage";
 import Postdescription from "./Postcomponents/Postdescription";
+import Loading from "./Loading";
+
 const Postform = () => {
 
     const router = useRouter()
 
     let {user} = useContext(AuthContext)
+    const [submitted, setSubmitted] = useState()
 
     const userid = user?.user_id
 
     const createPost = async (e) => {
+        setSubmitted(true)
         e.preventDefault();
         const traded = document.getElementById('tradeimagepic');
         const wanted = document.getElementById('wantedimagepic');
@@ -29,12 +33,16 @@ const Postform = () => {
             body: formData
          })
 
-        if(response.status === 200) {  
+        if(response.status === 200) { 
+            setSubmitted(false) 
             router.push('/')
         }
     }
     return (
         <div>
+            {submitted &&
+            <Loading />
+            }
             <form className="postform" onSubmit={createPost}>
                 <div className="postforminner">
                     <Postimage />

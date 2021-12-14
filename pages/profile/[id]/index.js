@@ -5,7 +5,7 @@ import AuthContext from '../../../context/AuthContext'
 import Link from 'next/link'
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-
+import Loading from '../../../components/Loading'
 const Index = ({data}) => {
     
     let {user} = useContext(AuthContext)
@@ -17,6 +17,7 @@ const Index = ({data}) => {
 
     const [userdata, setUserdata] = useState()
     const [sameuser, setSameuser] = useState()
+    const [submitted, setSubmitted] = useState()
 
     useEffect(() => {
         if(loggeduser == userid ) {
@@ -41,15 +42,20 @@ const Index = ({data}) => {
     }
 
     const deletePost = async (id) => {
+        setSubmitted(true)
         const response = await fetch(`https://asiqursswap.herokuapp.com/api/post/delete/${id}/`, {
             method: 'DELETE'
         })
         if(response.ok) {
-            console.log('wow')
+            setSubmitted(false)
+            location.reload();
         }
     }
     return (
         <div className="profile">
+            {submitted && 
+              <Loading />
+            }
             <div className="profileusercontainer">
                 <div className="profileuser">
                     <img src={data[0]?.author_avatar || userdata?.avatar}/>

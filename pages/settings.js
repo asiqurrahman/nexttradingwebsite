@@ -5,6 +5,7 @@ import Googleplaces from '../components/Googleplaces'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import Googlemaps from '../components/Googlemaps'
+import Loading from '../components/Loading'
 const Settings = () => {
     let {user} = useContext(AuthContext)
     const [userdata, setUserdata] = useState()
@@ -41,10 +42,6 @@ const Settings = () => {
             method: 'PATCH',
             body: formData
         })
-
-        if(response.ok) {
-            console.log('wow')
-        }
     }
 
     const onChangePicture = e => {

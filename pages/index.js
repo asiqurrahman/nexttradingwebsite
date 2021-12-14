@@ -5,6 +5,7 @@ import Navcover from '../components/Navcover'
 import Siteexplanation from '../components/SiteExplanation'
 import Allpost from '../components/Allpost'
 import React, {useContext, useState} from 'react'
+import Loading from '../components/Loading'
 
 
 export default function Home({data}) {
