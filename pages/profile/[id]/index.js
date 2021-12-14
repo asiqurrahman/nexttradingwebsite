@@ -66,17 +66,19 @@ const Index = ({data}) => {
                             <div className="allpostsingle" key={data.id} >
                                 <div className="allpostheader" id="profileallpostheader">
                                     <div className="profilepostheader">
-                                        <img src="https://asiqstestbucket.s3.amazonaws.com/default.jpg"/>
+                                        <img src={data.author_avatar || userdata?.avatar}/>
                                         <p>{data?.author_username}</p>
                                     </div>
-                                    <div className="deletepost">
-                                        <Popup trigger={<p>Delete Post</p>} position="bottom center">
-                                            <div className="confirmdelete">
-                                                <h4>are you sure?</h4>
-                                                <p className="deletepost" onClick={() => deletePost(data.id)}>Delete</p>
-                                            </div>
-                                        </Popup>
-                                    </div>
+                                    {sameuser &&
+                                        <div className="deletepost">
+                                            <Popup trigger={<p>Delete Post</p>} position="bottom center">
+                                                <div className="confirmdelete">
+                                                    <h4>are you sure?</h4>
+                                                    <p className="deletepost" onClick={() => deletePost(data.id)}>Delete</p>
+                                                </div>
+                                            </Popup>
+                                        </div>
+                                    }
                                 </div>
                                 <div className="allpostimages" onClick={() => sendTo(data.id)}>
                                     <div className="allpostdiv">
