@@ -12,9 +12,11 @@ export const AuthProvider = ({children}) => {
     let [authTokens, setAuthTokens] = useState(null)
     let [user, setUser] = useState(null)
     let [loading, setLoading] = useState(false)
-    const [failedlogin, setFailedlogin] = useState(false)
+    let [failedlogin, setFailedlogin] = useState(false)
+    let [locationset, setLocationset] = useState()
     const router = useRouter()
 
+    const userid = user?.user_id
     const token = authTokens?.refresh
 
     useEffect(() => {
@@ -54,7 +56,6 @@ export const AuthProvider = ({children}) => {
         setUser(null)
         localStorage.removeItem('authTokens')
         router.push('/login')
-
     }
 
     
@@ -98,6 +99,15 @@ export const AuthProvider = ({children}) => {
 
     }, [authTokens, loading])
 
+    useEffect(async() => {
+        const response = await fetch(`https://asiqursswap.herokuapp.com/api/user/${userid}/`)
+        const data = await response.json()
+        if(data.lat) {
+            setLocationset(true)
+        } else {
+            setLocationset(false)
+        }
+    }, [userid])
 
     let contextData = {
         user:user,
@@ -105,6 +115,7 @@ export const AuthProvider = ({children}) => {
         logoutUser:logoutUser,
         authTokens:authTokens,
         failedlogin:failedlogin,
+        locationset:locationset,
     }
 
     return(

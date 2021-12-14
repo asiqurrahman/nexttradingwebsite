@@ -10,15 +10,7 @@ const Index = ({data}) => {
     const userid = router.query.id
 
     const [userdata, setUserdata] = useState()
-    console.log("THIS IS ID" + userid)
-    console.log("THIS IS USERDAT" + JSON.stringify(userdata))
-
-    useEffect(async () => {
-        const response = await fetch(`https://asiqursswap.herokuapp.com/api/user/${userid}/`)
-        const data = await response.json()
-        setUserdata(data)
-    }, [data])
-
+ 
     function sendTo(id){
         router.push('/post/' + id)
     }
@@ -30,8 +22,8 @@ const Index = ({data}) => {
         <div className="profile">
             <div className="profileusercontainer">
                 <div className="profileuser">
-                    <img src={userdata?.avatar} />
-                    <h2>{userdata?.username}</h2>
+                    <img src={data[0]?.author_avatar} />
+                    <h2>{data[0]?.author_username}</h2>
                     <div className="messageuser">
                         <p onClick={message}>Send Message</p>
                     </div>
@@ -42,7 +34,7 @@ const Index = ({data}) => {
                 <div className="allpostsingle" key={data.id} onClick={() => sendTo(data.id)}>
                     <div className="allpostheader">
                         <img src="https://asiqstestbucket.s3.amazonaws.com/default.jpg"/>
-                        <p>Asiqur</p>
+                        <p>{data?.author_username}</p>
                     </div>
                     <div className="allpostimages">
                         <div className="allpostdiv">

@@ -5,27 +5,6 @@ const Allpost = ({data}) => {
 
     const router = useRouter()
 
-    const [something, setSomething] = useState()
-
-   const getUser = async (id) => {
-       let url = `https://asiqursswap.herokuapp.com/api/user/${id}/`
-       const response = await fetch(url)
-       const data = await response.json()
-       const returnedurl = data.avatar
-       const returnedusername = data.username
-       const userurl = returnedurl
-       const username = returnedusername
-       const userdata = [userurl, username]
-       return userdata
-   }
-
-   async function test(id) {
-       const hmm = await getUser(id)
-       return hmm[0]
-   }
-
-   console.log(test(1))
-
     function sendTo(id){
         router.push('/post/' + id)
     }
@@ -35,8 +14,8 @@ const Allpost = ({data}) => {
              {data?.map((data) => (
                 <div className="allpostsingle" key={data.id} onClick={() => sendTo(data.id)}>
                     <div className="allpostheader">
-                        <img src="https://asiqstestbucket.s3.amazonaws.com/default.jpg"/>
-                        <p>Asiqur</p>
+                        <img src={data?.author_avatar}/>
+                        <p>{data?.author_username}</p>
                     </div>
                     <div className="allpostimages">
                         <div className="allpostdiv">
