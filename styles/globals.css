@@ -794,6 +794,15 @@ nav {
   font-size: 1.5em;
 }
 
+#allpostsinglenodata {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5em;
+  flex-direction: column;
+  height: 350px;
+}
+
 /* footer */
 
 footer {

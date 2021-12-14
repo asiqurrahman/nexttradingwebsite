@@ -134,7 +134,7 @@ const Settings = () => {
                             <Googleplaces />
                         </div>
                         :
-                        <p className="userp">{usercity ? usercity : "Not Set. Edit profile to set Location" }</p>
+                        <p className="userp">{usercity ? usercity : "Not Set. Edit profile to set location" }</p>
                         }
                     </div>
                 </div>
