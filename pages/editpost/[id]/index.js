@@ -2,7 +2,7 @@ import router from "next/router";
 import React, { useState, useEffect, useContext } from "react";
 import Loading from "../../../components/Loading";
 
-const index = ({data}) => {
+const Index = ({data}) => {
 
     const [submitted, setSubmitted] = useState()
 
@@ -156,7 +156,7 @@ const index = ({data}) => {
     )
 }
 
-export default index
+export default Index
 
 export const getServerSideProps = async (context) => {
     const response = await fetch(`https://asiqursswap.herokuapp.com/api/post/${context.params.id}/`)
