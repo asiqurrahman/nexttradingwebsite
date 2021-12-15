@@ -867,6 +867,26 @@ nav {
   margin: 0px;
 }
 
+.profilebuttons {
+  display: flex;
+}
+ 
+.profileedit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  background-color: #e7e7e7;
+  color: black;
+  margin-right: 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.profileedit h4 {
+  margin: 0px;
+}
 
 /* footer */
 

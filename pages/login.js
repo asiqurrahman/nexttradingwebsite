@@ -3,10 +3,11 @@ import React, {useContext, useState, useEffect} from 'react'
 import AuthContext from '../context/AuthContext'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import Loading from '../components/Loading'
 
 const Login = () => {
 
-    let {loginUser, user, failedlogin} = useContext(AuthContext)
+    let {loginUser, user, failedlogin, submitted} = useContext(AuthContext)
 
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
@@ -42,6 +43,9 @@ const Login = () => {
       };
     return (
         <div className="loginpage">
+            {submitted && 
+            <Loading />
+            }
             {usercreated && <p>Account Created, Please login</p>}
             <div className="loginform">
                 <div className="loginheader">

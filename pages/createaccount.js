@@ -3,8 +3,9 @@ import React, {useContext, useState} from 'react'
 import AuthContext from '../context/AuthContext'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-
+import Loading from '../components/Loading'
 const Createaccount = () => {
+
 
     const router = useRouter()
 
@@ -14,7 +15,7 @@ const Createaccount = () => {
     const [confirmpassword, setConfirmpassword] = useState('');
     const [passwordsdontmatch, setPasswordsdontmatch] = useState(false)
     const [uniqueissue, setUniqueissue] = useState(false)
-
+    const [submitted, setSudmitted] = useState()
     
     function SubmitButton(){
         if (password && email && confirmpassword && username){
@@ -43,6 +44,7 @@ const Createaccount = () => {
     }
 
     const userCreated = async (e) => {
+        setSudmitted(true)
         let formData = new FormData()
         formData.append("email", e.target.email.value)
         formData.append("username", e.target.username.value)
@@ -53,8 +55,10 @@ const Createaccount = () => {
             body: formData
          })
         if(response.status === 400) {  
+            setSudmitted(false)
             setUniqueissue(true)
         } else {
+            setSudmitted(false)
             router.push({
                 pathname: '/login',
                 query: { from: 'usercreated' }
@@ -64,6 +68,9 @@ const Createaccount = () => {
 
     return (
         <div className="loginpage">
+            {submitted && 
+                <Loading />
+            }
             <div className="loginform">
                 <div className="loginheader">
                     <h3>Create Account</h3>

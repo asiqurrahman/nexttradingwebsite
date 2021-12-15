@@ -6,6 +6,7 @@ import Link from 'next/link'
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import Loading from '../../../components/Loading'
+
 const Index = ({data}) => {
     
     let {user} = useContext(AuthContext)
@@ -18,6 +19,10 @@ const Index = ({data}) => {
     const [userdata, setUserdata] = useState()
     const [sameuser, setSameuser] = useState()
     const [submitted, setSubmitted] = useState()
+
+    const refreshData = () => {
+        router.replace(router.asPath);
+    }
 
     useEffect(() => {
         if(loggeduser == userid ) {
@@ -48,9 +53,14 @@ const Index = ({data}) => {
         })
         if(response.ok) {
             setSubmitted(false)
-            location.reload();
+            refreshData()
         }
     }
+
+    const editPost = (id) => {
+        router.push('/editpost/' + id)
+    }
+ 
     return (
         <div className="profile">
             {submitted && 
@@ -76,14 +86,20 @@ const Index = ({data}) => {
                                         <p>{data?.author_username}</p>
                                     </div>
                                     {sameuser &&
-                                        <div className="deletepost">
-                                            <Popup trigger={<p>Delete Post</p>} position="bottom center">
-                                                <div className="confirmdelete">
-                                                    <h4>are you sure?</h4>
-                                                    <p className="deletepost" onClick={() => deletePost(data.id)}>Delete</p>
-                                                </div>
-                                            </Popup>
+                                        <div className="profilebuttons">
+                                            <div className="profileedit" onClick={() => editPost(data.id)}>
+                                                <h4>Edit</h4>
+                                            </div>
+                                            <div className="deletepost">
+                                                <Popup trigger={<p>Delete Post</p>} position="bottom center">
+                                                    <div className="confirmdelete">
+                                                        <h4>are you sure?</h4>
+                                                        <p className="deletepost" onClick={() => deletePost(data.id)}>Delete</p>
+                                                    </div>
+                                                </Popup>
+                                            </div>
                                         </div>
+                                    
                                     }
                                 </div>
                                 <div className="allpostimages" onClick={() => sendTo(data.id)}>

@@ -14,6 +14,8 @@ export const AuthProvider = ({children}) => {
     let [loading, setLoading] = useState(false)
     let [failedlogin, setFailedlogin] = useState(false)
     let [locationset, setLocationset] = useState()
+    let [submitted, setSubmitted] = useState()
+
     const router = useRouter()
 
     const userid = user?.user_id
@@ -31,6 +33,7 @@ export const AuthProvider = ({children}) => {
 
     let loginUser = async (e) => {
         e.preventDefault();
+        setSubmitted(true)
         let response = await fetch('https://asiqursswap.herokuapp.com/api/token/', {
         // let response = await fetch('http://127.0.0.1:8000/api/token/', {
             method:'POST',
@@ -42,11 +45,13 @@ export const AuthProvider = ({children}) => {
         let data = await response.json()
 
         if(response.status == 200) {
+            setSubmitted(false)
             setAuthTokens(data)
             setUser(jwt_decode(data.access))
             localStorage.setItem('authTokens', JSON.stringify(data))
             router.push('/')
         } else {
+            setSubmitted(false)
             setFailedlogin(true)
         }
     }
@@ -116,6 +121,7 @@ export const AuthProvider = ({children}) => {
         authTokens:authTokens,
         failedlogin:failedlogin,
         locationset:locationset,
+        submitted:submitted,
     }
 
     return(

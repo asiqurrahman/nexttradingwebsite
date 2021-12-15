@@ -6,14 +6,23 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import Googlemaps from '../components/Googlemaps'
 import Loading from '../components/Loading'
+import { useRouter } from 'next/router'
+
+
 const Settings = () => {
+
+
     let {user} = useContext(AuthContext)
+
+    const router = useRouter()
+
     const [userdata, setUserdata] = useState()
     const [edit, setEdit] = useState(false)
     const [picture, setPicture] = useState(null);
     const [tradedimage, setTradedimage] = useState(null);
     const [lat, setLat] = useState()
     const [lng, setLng] = useState()
+    const [submitted, setSubmitted] = useState()
 
     const userid = user?.user_id
     const usercity = userdata?.city
@@ -33,17 +42,6 @@ const Settings = () => {
     }, [userid])
 
 
-    const changeProfile = async (e) => {
-        e.preventDefault();
-        const changepic = document.getElementById('changepic');
-        let formData = new FormData()
-        formData.append("avatar", changepic.files[0])
-        const response = await fetch(`https://asiqursswap.herokuapp.com/api/user/update/${userid}/`, {
-            method: 'PATCH',
-            body: formData
-        })
-    }
-
     const onChangePicture = e => {
         if (e.target.files[0]) {
           setPicture(e.target.files[0]);
@@ -57,6 +55,7 @@ const Settings = () => {
 
     const getLocation = async (e,) => {
         e.preventDefault()
+        setSubmitted(true)
         const address = e.target.locationval.value
         const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyAsJLWRgoDZj4pMuIej-7y_AMiGbr3LlDI`, {
             method:'POST'
@@ -68,6 +67,7 @@ const Settings = () => {
 
     const updateLocation = async (e , data) => {
         e.preventDefault();
+        const changepic = document.getElementById('changepic');
         let maincity;
         try {
             const city = data.results[0].address_components.filter(ac=>~ac.types.indexOf('locality'))[0].long_name
@@ -87,23 +87,32 @@ const Settings = () => {
         formData.append("lng", long)
         formData.append("city", citystate)
         formData.append("zipcode", zipcode)
+        if(changepic.files[0]) {
+            formData.append("avatar", changepic.files[0])
+        }
         const response = await fetch(`https://asiqursswap.herokuapp.com/api/user/update/${userid}/`, {
             method: 'PATCH',
             body: formData
         })
         if(response.ok) {
-            location.reload();
+            setSubmitted(false)
+            location.reload()
         }
     }
 
-    const allFunc = (e) => {
-        getLocation(e)
-        changeProfile(e)
-    }
+    // const allFunc = (e) => {
+    //     setSubmitted(true)
+    //     getLocation(e)
+    //     changeProfile(e)
+    //     setSubmitted(false)
+    // }
 
     return (
         <div className="usersettings">
-            <form className="settingscontainer2" onSubmit={allFunc}>
+            {submitted &&
+                <Loading />
+            }
+            <form className="settingscontainer2" onSubmit={getLocation}>
                 <div className="settingscontainer">
                     <div className="settingsimg">
                         <img src={tradedimage ? tradedimage : userdata?.avatar} />
