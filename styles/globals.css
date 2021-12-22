@@ -994,6 +994,12 @@ footer {
     align-items: center;
   }
 
+  /* Create Post */
+
+  .postdescriptiondisplay {
+    width: 100%;
+  }
+  
 }
 
 @media (max-width: 902px) {

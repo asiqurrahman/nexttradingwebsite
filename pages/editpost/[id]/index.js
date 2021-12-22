@@ -1,16 +1,24 @@
 import router from "next/router";
 import React, { useState, useEffect, useContext } from "react";
 import Loading from "../../../components/Loading";
+import dynamic from 'next/dynamic'
+import 'react-quill/dist/quill.snow.css'
+import Parser from 'html-react-parser';
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 const Index = ({data}) => {
 
     const [submitted, setSubmitted] = useState()
+
+    const [value, setValue] = useState('');
+
 
     useEffect(() => {
         setTrade(data.trade)
         setWanted(data.wanted)
         setTradedescription(data.trade_description)
         setWanteddescription(data.wanted_description)
+        setValue(data.description)
     }, [data])
 
 
@@ -77,8 +85,7 @@ const Index = ({data}) => {
         }
         formData.append("trade", e.target.trade.value)
         formData.append("wanted", e.target.wanted.value)
-        formData.append("trade_description", e.target.traddescription.value)
-        formData.append("wanted_description", e.target.wanteddescription.value)
+        formData.append("description", value)
         const response = await fetch(`https://asiqursswap.herokuapp.com/api/updatepost/${data.id}/`, {
             // const response = await fetch('http://127.0.0.1:8000/api/createpost/', {
                 method: "PATCH",
@@ -134,16 +141,13 @@ const Index = ({data}) => {
                         </div>
                     </div>
 
-                    <div className="postdescription">
-                        <div>
-                            <label>Description</label>
-                            <p>Descripe what you have...</p>
-                            <textarea id="tradedescription" name="traddescription" value={tradedescription} onChange={handleChange3} rows="4" cols="50" required/>
-                        </div>
-                        <div>
-                            <label>Description</label>
-                            <p>Descripe what you want</p>
-                            <textarea id="tradedescription" name="wanteddescription" rows="4" value={wanteddescription} onChange={handleChange4} cols="50" required/>
+                    <div className="postdescriptioncontainer">
+                        <div className="postdescription">
+                            <p>Add a description of what you have and what you would like to trade for</p>
+                            <ReactQuill theme="snow" value={value} toolbar={false} onChange={setValue}/>
+                            {value &&
+                            <div className="postdescriptiondisplay">{Parser(value)}</div>
+                            }
                         </div>
                     </div>
 
