@@ -2,8 +2,11 @@ import React, { useState, useContext } from "react";
 import { useRouter } from 'next/router'
 import AuthContext from "../context/AuthContext";
 import Postimage from "./Postcomponents/Postimage";
-import Postdescription from "./Postcomponents/Postdescription";
 import Loading from "./Loading";
+import dynamic from 'next/dynamic'
+import 'react-quill/dist/quill.snow.css'
+import Parser from 'html-react-parser';
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 const Postform = () => {
 
@@ -13,6 +16,8 @@ const Postform = () => {
     const [submitted, setSubmitted] = useState()
 
     const userid = user?.user_id
+
+    const [value, setValue] = useState('');
 
     const createPost = async (e) => {
         setSubmitted(true)
@@ -25,8 +30,7 @@ const Postform = () => {
         formData.append("wanted", e.target.wanted.value)
         formData.append("trade_image", traded.files[0])
         formData.append("wanted_image", wanted.files[0])
-        formData.append("trade_description", e.target.traddescription.value)
-        formData.append("wanted_description", e.target.wanteddescription.value)
+        formData.append("description", value)
         const response = await fetch('https://asiqursswap.herokuapp.com/api/createpost/', {
         // const response = await fetch('http://127.0.0.1:8000/api/createpost/', {
             method: "POST",
@@ -46,7 +50,16 @@ const Postform = () => {
             <form className="postform" onSubmit={createPost}>
                 <div className="postforminner">
                     <Postimage />
-                    <Postdescription />
+                    <hr />
+                    <div className="postdescriptioncontainer">
+                        <div className="postdescription">
+                            <p>Add a description of what you have and what you would like to trade for</p>
+                            <ReactQuill theme="snow" value={value} toolbar={false} onChange={setValue}/>
+                            {value &&
+                            <div className="postdescriptiondisplay">{Parser(value)}</div>
+                            }
+                        </div>
+                    </div>
                     <div className="postsubmit">
                         <input type="submit" value="Post" />
                     </div>

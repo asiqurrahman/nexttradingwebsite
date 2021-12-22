@@ -10,12 +10,6 @@ const Createpost = () => {
     let {user, locationset} = useContext(AuthContext)
     const userid = user?.user_id
 
-    useEffect(() => {
-        if(!user) {
-            router.push('/')
-        }
-    })
-
     return (
         <div>
             <div className="creatposttitle">

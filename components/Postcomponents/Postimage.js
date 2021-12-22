@@ -43,33 +43,34 @@ const Postimage = () => {
                 <div>
                     <label>What do you have to trade?</label>
                     <br />
-                    <input type="text" placeholder="e.g - PS5" name="trade" required/>
+                    <input type="text" name="trade" required/>
                 </div>
                 <div>
                     <label>What would you like to trade for?</label>
                     <br />
-                    <input type="text" placeholder="e.g - Xbox Series X" name="wanted" required/>
+                    <input type="text" name="wanted" required/>
                 </div>
             </div>
             <div className="postimages">
                 <div className="tradedimage">
-                    <label>Add an image of your item</label>
-                    <br />
-                    <input type="file"  accept="image/*" name="tradeimage" id="tradeimagepic" onChange={onChangePicture} required/>
-                    
+                    <div className="postinputholder">
+                      <label>Add an image of your item</label>
+                      <br />
+                      <input type="file"  accept="image/*" name="tradeimage" id="tradeimagepic" onChange={onChangePicture} required/>
+                    </div>
                     <div className="previewProfilePic">
                         <img className="playerProfilePic_home_tile" src={tradedimage} />
                     </div>
                 </div>
                 <div className="wantedimage">
-                  <label>Add an image of what you want</label>
-                    <br />
-                    <input type="file"  accept="image/*" name="wantedimage" id="wantedimagepic" onChange={onChangePicture2} required/>
-                    
+                    <div className="postinputholder">
+                      <label>Add an image of what you want</label>
+                       <br />
+                       <input type="file"  accept="image/*" name="wantedimage" id="wantedimagepic" onChange={onChangePicture2} required/>
+                    </div>
                     <div className="previewProfilePic">
                         <img className="playerProfilePic_home_tile" src={wantedimage} />
                     </div>
-                    
                 </div>
             </div>
         </div>

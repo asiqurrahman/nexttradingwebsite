@@ -79,7 +79,7 @@ const Index = ({data}) => {
                 {data[0] ? 
                     <div>
                         {data?.map((data) => (
-                            <div className="allpostsingle" key={data.id} >
+                            <div className="allpostsingle profilesinglepost" key={data.id} >
                                 <div className="allpostheader" id="profileallpostheader">
                                     <div className="profilepostheader">
                                         <img src={data.author_avatar || userdata?.avatar}/>
@@ -99,7 +99,6 @@ const Index = ({data}) => {
                                                 </Popup>
                                             </div>
                                         </div>
-                                    
                                     }
                                 </div>
                                 <div className="allpostimages" onClick={() => sendTo(data.id)}>

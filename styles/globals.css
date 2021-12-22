@@ -69,6 +69,7 @@ nav {
   position: fixed;
   top: 0;
   z-index: 5;
+  max-height: 100px;
 }
 
 
@@ -322,7 +323,6 @@ nav {
 
 .explanation img {
   width: auto;
-  /* height: 300px; */
   min-height: 100px;
   max-height: 300px;
 }
@@ -415,11 +415,28 @@ nav {
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
-.postdescription {
+.postdescriptioncontainer {
   display: flex;
-  justify-content: space-around;
-  margin:30px;
-  text-align: center;
+  justify-content: center;
+}
+
+.postdescription {
+  width: 900px;
+  margin: 20px;
+  border-radius: 30px;
+}
+
+.postdescriptiondisplay {
+  width: 900px;
+  margin-top: 20px;
+  background-color: whitesmoke;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  padding: 20px;
+}
+
+.ql-editor{
+  min-height: 300px;
+  background-color: whitesmoke;
 }
 
 .postsubmit {
@@ -608,7 +625,8 @@ nav {
 }
 
 .singledescription {
-  width: 400px;
+  width: 80%;
+  font-size: 1em !important;
   border-radius: 20px;
   padding: 20px;
   background-color: whitesmoke;
@@ -751,6 +769,9 @@ nav {
   height: 300px !important;
 }
 
+textarea {
+  resize: none;
+}
 
 /* PROFILE PAGE */
 
@@ -903,4 +924,276 @@ footer {
   height: 100%;
   justify-content: center;
   align-items: center;
+}
+
+
+@media (max-width: 1400px) {
+
+  .profileuser {
+
+  }
+  .profilesinglepost {
+    width: 90%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .navcover h1 {
+    font-size: 3em;
+  }
+
+  .navcover p {
+    font-size: 1em;
+  }
+
+  #navcoveritem {
+    margin-left: 40px;
+  }
+
+  .navcoverimage img {
+    height: 300px;
+  }
+
+  /* All Post */
+
+  .allpostsingle {
+    width: 900px;
+  }
+
+  .allpostimages img {
+    height: 250px;
+    width: 350px;
+  }
+
+  .allpost p{
+    font-size: 1.7em;
+  }
+
+  .allpostheader img {
+    height: 45px;
+    width: 45px;
+  }
+
+}
+
+@media (max-width: 902px) {
+  /* Nav and Nav cover */
+  #wave {
+    height: 20%;
+  }
+
+  .navcover h1 {
+    font-size: 2em;
+  }
+
+  .navcover p {
+    font-size: 1em;
+  }
+
+  .navcoverimage img {
+    height: 250px;
+  }
+
+  /* Site explanation */
+
+  .explanation p {
+    font-size: 1em;
+  }
+
+  .explanation img {
+    max-height: 200px;
+  }
+
+    /* All Post */
+
+    .allpostsingle {
+      width: 90%;
+    }
+  
+    .allpostimages img {
+      height: 200px;
+      width: 250px;
+    }
+  
+    .allpost p{
+      font-size: 1.5em;
+    }
+  
+    .allpostheader img {
+      height: 40px;
+      width: 40px;
+    }
+
+    .swapimage {
+      width: 50px !important;
+      height: 50px !important;
+    }
+
+    /* Create Post */
+
+    .posttitle {
+      padding: 0px;
+    }
+
+    .posttitle input {
+      min-width: 100px;
+      max-width: 300px;
+      margin: 0px;
+      padding: 0px;
+    }
+
+    .tradedimage {
+      margin: 5px;
+    }
+
+    .wantedimage {
+      margin: 5px;
+    }
+
+    .postimages img {
+      width: 95%;
+      height: auto;
+    }
+}
+
+@media (max-width: 425px) {
+  
+
+  .navlogo {
+    display: none !important;
+  }
+
+  .navcover {
+    flex-direction: column;
+  }
+
+  #navcoveritem {
+    margin-left: 0px;
+    text-align: center;
+  }
+
+  .navcoverloginbutton {
+    justify-content: center;
+  }
+
+  .navsearchbar {
+    border-radius: 10px;
+    height: 50px;
+    width: 100px;
+    padding: 20px;
+    transition-duration: .3s;
+  }
+
+  .navsearchbar:focus {
+    width: 200px;
+  }
+
+  .navcoverimage img {
+    height: 100px;
+  }
+
+  .explanation {
+    overflow: hidden;
+  }
+
+  .navcoverimage img {
+    margin-top: 40px;
+    height: 200px;
+  }
+
+  /* Site Explanation */
+
+  .explanation {
+    flex-direction: column;
+    padding: 10px;
+    text-align: left;
+  }
+  .explanation p {
+    font-size: .9em;
+  }
+
+  .explanation img {
+    max-height: 150px;
+  }
+
+  /* Login Form */
+
+  .loginheader h3 {
+    font-size: 2em;
+  }
+
+  .loginform {
+    width: 90%;
+  }
+
+  .logininput {
+    width: 90%;
+    margin-left: 10px;
+  }
+
+  .loginpage label {
+    margin-left: 10px;
+    font-size: 1.2em;
+  }
+
+  #createaccountlogininput {
+    width: 300px !important;
+  }
+
+    /* All Post */
+
+    .allpostsingle {
+      width: 100%;
+      border-radius: 0px;
+    }
+
+    .allpostimages {
+      flex-direction: column;
+    }
+  
+    .allpostimages img {
+      height: 250px;
+      width: 350px;
+      
+    }
+  
+    .allpost p{
+      font-size: 1.5em;
+    }
+  
+    .allpostheader img {
+      height: 40px;
+      width: 40px;
+    }
+
+    .swapimage {
+      margin-top: 10px;
+      transform: rotate(90deg)
+    }
+
+    /* CREATE POST */
+
+    .postform {
+      overflow: hidden;
+    }
+
+    .postforminner {
+      overflow: hidden;
+    }
+
+    .posttitle {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .postimages {
+      flex-direction: column;
+    }
+
+    .postdescriptiondisplay {
+      width: 95%;
+    }
+
+
 }

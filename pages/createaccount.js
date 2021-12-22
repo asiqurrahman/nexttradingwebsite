@@ -80,20 +80,20 @@ const Createaccount = () => {
                         {uniqueissue && <p>This email is already associated with an account. <Link href="/login">Log in</Link></p>}
                         <label>Email</label>
                         <br />
-                        <input className="logininput" type="email" name="email" placeholder="Enter Email" autoComplete="off" onChange={ e => setEmail(e.target.value)}/>
+                        <input className="logininput" id="createaccountlogininput" type="email" name="email" placeholder="Enter Email" autoComplete="off" onChange={ e => setEmail(e.target.value)}/>
                         <br />
                         <label>Username</label>
                         <br />
-                        <input className="logininput" type="text" name="username" placeholder="Enter Username" autoComplete="off" onChange={ e => setUsername(e.target.value)}/>
+                        <input className="logininput" id="createaccountlogininput" type="text" name="username" placeholder="Enter Username" autoComplete="off" onChange={ e => setUsername(e.target.value)}/>
                         <br />
                         <label>Password</label>
                         <br />
-                        <input className="logininput" type="password" name="password" placeholder="Enter Password" autoComplete="off" onChange={ e => setPassword(e.target.value)}/>
+                        <input className="logininput" id="createaccountlogininput" type="password" name="password" placeholder="Enter Password" autoComplete="off" onChange={ e => setPassword(e.target.value)}/>
                         <br />
                         <label>Confirm Password</label>
                         {passwordsdontmatch && <p>Passwords dont match</p>}
                         <br />
-                        <input className="logininput" type="password" name="password2" placeholder="Confirm Password" autoComplete="off" onChange={ e => setConfirmpassword(e.target.value)}/>
+                        <input className="logininput" id="createaccountlogininput" type="password" name="password2" placeholder="Confirm Password" autoComplete="off" onChange={ e => setConfirmpassword(e.target.value)}/>
                         <SubmitButton />
                         <div className="switchlog">
                             <Link href="/login">
