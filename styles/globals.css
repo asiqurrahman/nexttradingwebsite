@@ -929,11 +929,13 @@ footer {
 
 @media (max-width: 1400px) {
 
-  .profileuser {
+  /* PROFILE PAGE */
 
+  .profileuser {
+    width: 250px;
   }
   .profilesinglepost {
-    width: 90%;
+    width: 900px;
   }
 }
 
@@ -972,6 +974,24 @@ footer {
   .allpostheader img {
     height: 45px;
     width: 45px;
+  }
+
+  /* PROFILE PAGE */
+
+  .profile {
+    flex-direction: column;
+  }
+
+  .profileuser {
+    position: relative;
+    margin-top: 20px;
+    width: 300px;
+  }
+
+  .profileuserpost {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
 }
@@ -1054,6 +1074,29 @@ footer {
       width: 95%;
       height: auto;
     }
+
+      /* PROFILE PAGE */
+
+  .profile {
+    flex-direction: column;
+  }
+
+  .profilesinglepost {
+    width: 650px;
+  }
+
+  .profileuser {
+    position: relative;
+    margin-top: 20px;
+    width: 300px;
+  }
+
+  .profileuserpost {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
 }
 
 @media (max-width: 425px) {
@@ -1193,6 +1236,49 @@ footer {
 
     .postdescriptiondisplay {
       width: 95%;
+    }
+
+    /* PROFILE PAGE */
+
+    .profilepostimages  img{
+      width: 300px;
+    } 
+
+    .deletepost p {
+      font-size: .5em;
+    }
+
+    .profileuserpost {
+      margin: auto !important;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0px !important;
+    }
+
+    .profilesinglepost {
+      width: inherit !important;
+    }
+
+    .profileedit {
+      width: 70px;
+      margin-left: 10px;
+    }
+
+    .deletepost {
+      width: 100px !important;
+      font-size: .9em;
+    }
+
+    .profilepostheader img {
+      height: 60px;
+      width: 60px;
+    }
+
+    .profilepostheader p {
+      max-width: 95px;
+      word-wrap: break-word
     }
 
 

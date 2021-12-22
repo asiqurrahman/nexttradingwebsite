@@ -102,14 +102,14 @@ const Index = ({data}) => {
                                     }
                                 </div>
                                 <div className="allpostimages" onClick={() => sendTo(data.id)}>
-                                    <div className="allpostdiv">
+                                    <div className="allpostdiv profilepostimages">
                                         <p>{data.trade}</p>
                                         <img src={data.trade_image} />
                                     </div>
                                     <div>
                                         <img src="../swap.png" className="swapimage"/>
                                     </div>
-                                    <div className="allpostdiv">
+                                    <div className="allpostdiv profilepostimages">
                                         <p>{data.wanted}</p>
                                         <img src={data.wanted_image} />
                                     </div>

@@ -31,6 +31,10 @@ export const AuthProvider = ({children}) => {
             } 
     }, [])
 
+    useEffect(() => {
+        setLocationset(JSON.parse(localStorage.getItem('location')))
+    }, [])
+
     let loginUser = async (e) => {
         e.preventDefault();
         setSubmitted(true)
@@ -107,9 +111,9 @@ export const AuthProvider = ({children}) => {
         const response = await fetch(`https://asiqursswap.herokuapp.com/api/user/${userid}/`)
         const data = await response.json()
         if(data.lat) {
-            setLocationset(true)
+            localStorage.setItem('location', true)
         } else {
-            setLocationset(false)
+            localStorage.setItem('location', false)
         }
     }, [userid])
 
