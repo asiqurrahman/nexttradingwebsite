@@ -34,8 +34,10 @@ const Index = ({data}) => {
     return (
         <div className="postpreview">
             <div className="postpreviewheader">
-                <img src={data?.author_avatar} onClick={() => sendTo(data?.author)}/>
-                <h1 onClick={() => sendTo(data?.author)}>{data?.author_username}</h1>
+                <div className="postpreviewheaderinner" onClick={() => sendTo(data?.author)}>
+                    <img src={data?.author_avatar}/>
+                    <h1>{data?.author_username}</h1>
+                </div>
             </div>
             <hr />
             <Singlepostimages data={data}/>
