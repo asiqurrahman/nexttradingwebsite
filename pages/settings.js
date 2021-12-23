@@ -68,39 +68,42 @@ const Settings = () => {
 
     const updateLocation = async (e , data) => {
         e.preventDefault();
-        const changepic = document.getElementById('changepic');
-        let maincity;
         try {
-            const city = data.results[0].address_components.filter(ac=>~ac.types.indexOf('locality'))[0].long_name
-            maincity = city
-        } catch(err) {
-            const city = data.results[0].address_components.filter(ac=>~ac.types.indexOf('sublocality'))[0].long_name
-            maincity = city
-        }
-        const state = data.results[0].address_components.filter(ac=>~ac.types.indexOf('administrative_area_level_1'))[0].long_name
-        const zipcode = data.results[0].address_components.filter(ac=>~ac.types.indexOf('postal_code'))[0].long_name
-        console.log(JSON.stringify(data))
-        const lat = data.results[0].geometry.location.lat
-        const long = data.results[0].geometry.location.lng
-        const citystate = maincity + ", " + state
-        let formData = new FormData()
-        formData.append("lat", lat)
-        formData.append("lng", long)
-        formData.append("city", citystate)
-        formData.append("zipcode", zipcode)
-        if(changepic.files[0]) {
-            formData.append("avatar", changepic.files[0])
-        }
-        const response = await fetch(`https://asiqursswap.herokuapp.com/api/user/update/${userid}/`, {
-            method: 'PATCH',
-            body: formData
-        })
+            const changepic = document.getElementById('changepic');
+            let maincity;
+            try {
+                const city = data.results[0].address_components.filter(ac=>~ac.types.indexOf('locality'))[0].long_name
+                maincity = city
+            } catch(err) {
+                const city = data.results[0].address_components.filter(ac=>~ac.types.indexOf('sublocality'))[0].long_name
+                maincity = city
+            }
+            const state = data.results[0].address_components.filter(ac=>~ac.types.indexOf('administrative_area_level_1'))[0].long_name
+            const zipcode = data.results[0].address_components.filter(ac=>~ac.types.indexOf('postal_code'))[0].long_name
+            console.log(JSON.stringify(data))
+            const lat = data.results[0].geometry.location.lat
+            const long = data.results[0].geometry.location.lng
+            const citystate = maincity + ", " + state
+            let formData = new FormData()
+            formData.append("lat", lat)
+            formData.append("lng", long)
+            formData.append("city", citystate)
+            formData.append("zipcode", zipcode)
+            if(changepic.files[0]) {
+                formData.append("avatar", changepic.files[0])
+            }
+            const response = await fetch(`https://asiqursswap.herokuapp.com/api/user/update/${userid}/`, {
+                method: 'PATCH',
+                body: formData
+            })
         if(response.ok) {
             setSubmitted(false)
             localStorage.setItem('location', true)
             location.reload()
-        } else {
+         }
+        } catch(error) {
             setSubmitted(false)
+            setLocationnotset(true)
         }
     }
 
@@ -132,7 +135,7 @@ const Settings = () => {
                         <p>Location:</p>
                         {edit ? 
                         <div>
-                            {locationnotset && <p>Try different location</p>}
+                            {locationnotset && <p>Location to braod </p>}
                              <p>Enter zipcode or address</p>
                             {/* <input type="text" className="editinput" id="locationval" required/> */}
                             <Googleplaces />
