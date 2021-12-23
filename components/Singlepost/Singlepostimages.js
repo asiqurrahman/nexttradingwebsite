@@ -6,7 +6,7 @@ const Singlepostimages = ({data}) => {
             <div className="singledesc">
                 <p>I would like to trade my...</p>
                 <h1>{data?.trade}</h1>
-                <img classname="singleimage" src={data?.trade_image} />
+                <img className="singleimage" src={data?.trade_image} />
             </div>
             <div>
                 <img src="../swap.png" className="swapimage"/>
@@ -14,7 +14,7 @@ const Singlepostimages = ({data}) => {
             <div className="singledesc">
                 <p>in exchange for...</p>
                 <h1>{data?.wanted}</h1>
-                <img classname="singleimage" src={data?.wanted_image} />
+                <img className="singleimage" src={data?.wanted_image} />
             </div>
         </div>
     )
