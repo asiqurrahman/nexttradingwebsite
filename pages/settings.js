@@ -100,6 +100,7 @@ const Settings = () => {
             localStorage.setItem('location', true)
             location.reload()
         } else {
+            setSubmitted(false)
             setLocationnotset(true)
         }
     }
