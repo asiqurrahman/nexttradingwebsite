@@ -101,7 +101,6 @@ const Settings = () => {
             location.reload()
         } else {
             setSubmitted(false)
-            setLocationnotset(true)
         }
     }
 
