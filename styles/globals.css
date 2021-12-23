@@ -999,7 +999,7 @@ footer {
   .postdescriptiondisplay {
     width: 100%;
   }
-  
+
 }
 
 @media (max-width: 902px) {
@@ -1288,4 +1288,19 @@ footer {
     }
 
 
+    /* SETTINGS */
+
+    .usersettings{
+      margin-top: 100px;
+    }
+
+    .settingscontainer2 {
+      border-radius: 0px;
+      margin-bottom: 5px;
+      margin-top: 0px;
+    }
+
+    .settingscontainer {
+      flex-direction: column;
+    }
 }
