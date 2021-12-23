@@ -23,6 +23,7 @@ const Settings = () => {
     const [lat, setLat] = useState()
     const [lng, setLng] = useState()
     const [submitted, setSubmitted] = useState()
+    const [locationnotset, setLocationnotset] = useState(false)
 
     const userid = user?.user_id
     const usercity = userdata?.city
@@ -98,15 +99,10 @@ const Settings = () => {
             setSubmitted(false)
             localStorage.setItem('location', true)
             location.reload()
+        } else {
+            setLocationnotset(true)
         }
     }
-
-    // const allFunc = (e) => {
-    //     setSubmitted(true)
-    //     getLocation(e)
-    //     changeProfile(e)
-    //     setSubmitted(false)
-    // }
 
     return (
         <div className="usersettings">
@@ -136,6 +132,7 @@ const Settings = () => {
                         <p>Location:</p>
                         {edit ? 
                         <div>
+                            {locationnotset && <p>Try different location</p>}
                              <p>Enter zipcode or address</p>
                             {/* <input type="text" className="editinput" id="locationval" required/> */}
                             <Googleplaces />
