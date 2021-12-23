@@ -1343,4 +1343,17 @@ footer {
     .settingscontainer {
       flex-direction: column;
     }
+
+    /* Single Post View */
+
+    .singelpostimages {
+      flex-direction: column;
+    }
+
+    .postpreviewheader {
+      padding: 0px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 }
