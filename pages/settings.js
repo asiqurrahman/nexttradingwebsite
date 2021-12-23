@@ -96,6 +96,7 @@ const Settings = () => {
         })
         if(response.ok) {
             setSubmitted(false)
+            localStorage.setItem('location', true)
             location.reload()
         }
     }
