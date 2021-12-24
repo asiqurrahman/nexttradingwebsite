@@ -53,7 +53,7 @@ const Nav = () => {
                 </div>
                 <div className="navsearch" id="navitem">
                     <div>
-                        <input className="navsearchbar" id="navsearch" onKeyUp={enterkey} type="text" placeholder="Search.." />
+                        <input className="navsearchbar" id="navsearch" onKeyUp={enterkey} type="search" placeholder="Search.." />
                     </div>
                 </div>
                 <div className="navuser" id="navitem">

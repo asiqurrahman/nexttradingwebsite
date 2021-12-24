@@ -22,6 +22,7 @@ const Settings = () => {
     const [tradedimage, setTradedimage] = useState(null);
     const [lat, setLat] = useState()
     const [lng, setLng] = useState()
+    const [original, setOriginal] = useState()
     const [submitted, setSubmitted] = useState()
     const [locationnotset, setLocationnotset] = useState(false)
 
@@ -40,6 +41,7 @@ const Settings = () => {
         setUserdata(data)
         setLat(separator(data.lat))
         setLng(separator(data.lng))
+        setOriginal(data.original_location)
     }, [userid])
 
 
@@ -89,6 +91,7 @@ const Settings = () => {
             formData.append("lng", long)
             formData.append("city", citystate)
             formData.append("zipcode", zipcode)
+            formData.append("original_location", e.target.locationval.value)
             if(changepic.files[0]) {
                 formData.append("avatar", changepic.files[0])
             }
