@@ -135,7 +135,12 @@ const Settings = () => {
                         <p>Location:</p>
                         {edit ? 
                         <div>
-                            {locationnotset && <p>Location to braod </p>}
+                            {locationnotset && 
+                            <div className="broadaddress">
+                                <p>Location to broad.</p>
+                                <p>Please enter a more specific location</p>
+                            </div>
+                            }
                              <p>Enter zipcode or address</p>
                             {/* <input type="text" className="editinput" id="locationval" required/> */}
                             <Googleplaces />

@@ -792,6 +792,14 @@ textarea {
   resize: none;
 }
 
+.broadaddress {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #B00020;
+  color: white;
+  width: auto;
+}
+
 /* PROFILE PAGE */
 
 .profile {
