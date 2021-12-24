@@ -3,8 +3,6 @@ import React, {useContext, useState, useEffect} from 'react'
 import AuthContext from '../context/AuthContext'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
 
 const Nav = () => {
     
@@ -32,6 +30,19 @@ const Nav = () => {
         router.push('/profile/' + id)
     }
 
+    const enterkey = (e) => {
+        if(e.key === 'Enter') {
+            searchpost(e)
+        }
+    }
+
+    const searchpost = (e) => {
+        var searchquarry = e.target.value
+        if(searchquarry && searchquarry.replace(/\s/g, '').length){
+            router.push('/search/' + searchquarry)
+        }
+    }
+
     return (
         <div>
             <nav>
@@ -42,7 +53,7 @@ const Nav = () => {
                 </div>
                 <div className="navsearch" id="navitem">
                     <div>
-                        <input className="navsearchbar" type="text" placeholder="Search.." />
+                        <input className="navsearchbar" id="navsearch" onKeyUp={enterkey} type="text" placeholder="Search.." />
                     </div>
                 </div>
                 <div className="navuser" id="navitem">
