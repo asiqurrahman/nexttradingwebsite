@@ -46,7 +46,7 @@ const Login = () => {
             {submitted && 
             <Loading />
             }
-            {usercreated && <p>Account Created, Please login</p>}
+            {usercreated && <p className="accountcreated">Account Created, Please login</p>}
             <div className="loginform">
                 <div className="loginheader">
                     <h3>Sign in</h3>
