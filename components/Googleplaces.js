@@ -49,7 +49,7 @@ const Googleplaces = () => {
             >
                 {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                 <div>
-                    <input {...getInputProps({ placeholder: "Type address" })} name="locationval" type="text" className="editinput" id="locationval" required/>
+                    <input {...getInputProps({ placeholder: "Type address" })} name="locationval" type="text" className="editinput" id="locationval"/>
                     <div className="google">
                     {loading ? <div>...loading</div> : null}
                     {suggestions.map(suggestion => {

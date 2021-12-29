@@ -8,7 +8,6 @@ import Googlemaps from '../components/Googlemaps'
 import Loading from '../components/Loading'
 import { useRouter } from 'next/router'
 
-
 const Settings = () => {
 
 
@@ -41,7 +40,6 @@ const Settings = () => {
         setUserdata(data)
         setLat(separator(data.lat))
         setLng(separator(data.lng))
-        setOriginal(data.original_location)
     }, [userid])
 
 
@@ -59,13 +57,66 @@ const Settings = () => {
     const getLocation = async (e,) => {
         e.preventDefault()
         setSubmitted(true)
+        const changepic = document.getElementById('changepic');
         const address = e.target.locationval.value
-        const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyAsJLWRgoDZj4pMuIej-7y_AMiGbr3LlDI`, {
-            method:'POST'
-        })
-        const data = await response.json()
-        console.log(JSON.stringify(data))
-        updateLocation(e, data)
+        if(address && changepic.files[0]) {
+            const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyAsJLWRgoDZj4pMuIej-7y_AMiGbr3LlDI`, {
+                method:'POST'
+            })
+            const data = await response.json()
+            updateLocation(e, data)
+        } else if (changepic.files[0]) {
+            let formData = new FormData()
+            formData.append("avatar", changepic.files[0])
+            const response = await fetch(`https://asiqursswap.herokuapp.com/api/user/update/${userid}/`, {
+                method: 'PATCH',
+                body: formData
+            })
+            if(response.ok) {
+                setSubmitted(false)
+                location.reload()
+            }
+        } else if (address) {
+            const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyAsJLWRgoDZj4pMuIej-7y_AMiGbr3LlDI`, {
+                method:'POST'
+            })
+            const data = await response.json()
+            try {
+                let maincity;
+                try {
+                    const city = data.results[0].address_components.filter(ac=>~ac.types.indexOf('locality'))[0].long_name
+                    maincity = city
+                } catch(err) {
+                    const city = data.results[0].address_components.filter(ac=>~ac.types.indexOf('sublocality'))[0].long_name
+                    maincity = city
+                }
+                const state = data.results[0].address_components.filter(ac=>~ac.types.indexOf('administrative_area_level_1'))[0].long_name
+                const zipcode = data.results[0].address_components.filter(ac=>~ac.types.indexOf('postal_code'))[0].long_name
+                const lat = data.results[0].geometry.location.lat
+                const long = data.results[0].geometry.location.lng
+                const citystate = maincity + ", " + state
+                let formData = new FormData()
+                formData.append("lat", lat)
+                formData.append("lng", long)
+                formData.append("city", citystate)
+                formData.append("zipcode", zipcode)
+                formData.append("original_location", e.target.locationval.value)
+                const response = await fetch(`https://asiqursswap.herokuapp.com/api/user/update/${userid}/`, {
+                    method: 'PATCH',
+                    body: formData
+                })
+            if(response.ok) {
+                setSubmitted(false)
+                localStorage.setItem('location', true)
+                location.reload()
+             }
+            } catch(error) {
+                setSubmitted(false)
+                setLocationnotset(true)
+            }
+        } else {
+            location.reload()
+        }
     }
 
     const updateLocation = async (e , data) => {
