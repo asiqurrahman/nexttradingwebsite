@@ -3,6 +3,8 @@ import React, {useContext, useState, useEffect} from 'react'
 import AuthContext from '../context/AuthContext'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { motion } from "framer-motion"
+
 
 const Nav = () => {
     
@@ -27,6 +29,7 @@ const Nav = () => {
     }, [userid])
 
     function sendTo(id){
+        setDropdown(!dropdown)
         router.push('/profile/' + id)
     }
 
@@ -59,21 +62,27 @@ const Nav = () => {
                 <div className="navuser" id="navitem">
                     {user ? 
                     <div className="navavatar">
-                        <div onClick={() => setDropdown(!dropdown)}>
-                            <img src={userimage} width="70" height="70"/>
+                        <div>
+                            <img onClick={() => setDropdown(!dropdown)} src={userimage} width="70" height="70"/>
                         </div>
                         {dropdown &&
-                            <div className="navdropdown">
+                            <motion.div className="navdropdown"
+                            initial={{opacity: 0, translateY: 30}} 
+                            animate={{opacity: 1, translateY: 0}} 
+                            transition={{duration: .3}}
+                            >
                                 <p>{user.username}</p>
                                 <p onClick={() => sendTo(userid)}>Profile</p>
                                 <Link href="/createpost">
-                                    <p>Create Post</p>
+                                    <p onClick={() => setDropdown(!dropdown)}>Create Post</p>
                                 </Link>
                                 <Link href="/settings">
-                                    <p>Settings</p>
+                                    <p onClick={() => setDropdown(!dropdown)}>Settings</p>
                                 </Link>
-                                <p onClick={logoutUser}>logout</p>
-                            </div>
+                                <div onClick={() => setDropdown(!dropdown)}>
+                                    <p onClick={logoutUser}>logout</p>
+                                </div>
+                            </motion.div>
                         }
                     </div>
                     :
