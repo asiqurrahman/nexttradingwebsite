@@ -53,6 +53,7 @@ export const AuthProvider = ({children}) => {
             setAuthTokens(data)
             setUser(jwt_decode(data.access))
             localStorage.setItem('authTokens', JSON.stringify(data))
+            localStorage.setItem('location', JSON.stringify(data.lat))
             router.push('/')
         } else {
             setSubmitted(false)

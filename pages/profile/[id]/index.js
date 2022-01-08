@@ -70,9 +70,9 @@ const Index = ({data}) => {
                 <div className="profileuser">
                     <img src={data[0]?.author_avatar || userdata?.avatar}/>
                     <h2>{data[0]?.author_username || userdata?.username}</h2>
-                    <div className="messageuser">
+                    {/* <div className="messageuser">
                         <p onClick={message}>Send Message</p>
-                    </div>
+                    </div> */}
                 </div>
             </div>
             <div className="profileuserpost">
